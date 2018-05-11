@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="amor">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--<div id="ng-app">
+        <div ng-controller="InvoiceController as amor">
+            <b>订单:</b>
+            <div>
+                数量: <input type="number" ng-model="amor.qty" required >
+            </div>
+            <div>
+                单价: <input type="number" ng-model="amor.cost" required >
+                <select ng-model="amor.inCurr">
+                    <option ng-repeat="c in amor.currencies">{{c}}</option>
+                </select>
+            </div>
+            <div>
+                <b>总价:</b>
+                <span ng-repeat="c in amor.currencies">
+
+        </span>
+                <button class="btn" ng-click="amor.pay()">支付</button>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="mainContainer pageAniM" ui-view></div>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="//cdn.bootcss.com/angular.js/1.6.10/angular.js"></script>
+<!--<script src="//cdn.bootcss.com/angular.js/1.5.8/angular-route.js"></script>-->
+<script src="https://cdn.bootcss.com/angular-ui-router/1.0.16/angular-ui-router.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script src="lib/js/ng-file-upload.min.js"></script>
+<script src="lib/js/ocLazyLoad.min.js"></script>
+<script src="lib/js/angular-animate.js"></script>
+<script src="lib/js/ui-bootstrap.js"></script>
+<script src="lib/js/angular-messages.js"></script>
+<!--layer必须有Jquery-->
+<script src="lib/js/layer/layer.js"></script>
+<script src="lib/js/echarts/echarts.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.6&key=您申请的key值&plugin=ElasticMarker,ToolBar"></script>
+<script src="lib/js/main.js"></script>
+<script src="lib/js/ui-router.js"></script>
+<!--<script src="index.js"></script>-->
+</body>
+</html>

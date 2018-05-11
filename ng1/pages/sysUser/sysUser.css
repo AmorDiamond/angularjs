@@ -1,0 +1,4 @@
+.table-overflow-x {
+	min-width: 1000px;
+	overflow-x: scroll;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="amor">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="ng-app">
+        <div ng-controller="InvoiceController as amor">
+            <b>订单:</b>
+            <div>
+                数量: <input type="number" ng-model="amor.qty" required >
+            </div>
+            <div>
+                单价: <input type="number" ng-model="amor.cost" required >
+                <select ng-model="amor.inCurr">
+                    <option ng-repeat="c in amor.currencies">{{c}}</option>
+                </select>
+            </div>
+            <div>
+                <b>总价:</b>
+                <span ng-repeat="c in amor.currencies">
+
+        </span>
+                <button class="btn" ng-click="amor.pay()">支付</button>
+            </div>
+        </div>
+    </div>
+<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.8/angular-route.js"></script>
+<script src="indexTest.js"></script>
+</body>
+</html>

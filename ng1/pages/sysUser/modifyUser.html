@@ -1,0 +1,42 @@
+<nav class="breadcrumb"><i class="fa fa-home"></i> 首页 <span class="c-gray en">&gt;</span> 后台用户管理  <span class="c-gray en">&gt;</span>修改用户</nav>
+<nav class="breadcrumb"><a ui-sref="me.sysUser"><i class="fa fa-hand-o-left"></i>&nbsp;&nbsp;&nbsp;返&nbsp;回</a></nav>
+<div class="modal-dialog "><div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">修改用户</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="compForm">
+            <div class="form-group">
+                <label class="col-md-2 control-label"><span class="require_span">*</span>账号: </label>
+                <div class="col-md-9">
+                    <input type="text" readonly class="form-control ng-pristine" name="account" ng-model="userInfo.account" ng-pattern="/^[a-zA-Z\d]{4,20}$/">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><span class="require_span">*</span>姓名:</label>
+                <div class="col-md-9" ng-class="{ 'has-error' : compForm.user_name.$invalid && (compForm.user_name.$touched || !compForm.user_name.$pristine) }">
+                    <input type="text" class="form-control" placeholder="请输入姓名" name="user_name" ng-model="userInfo.name" ng-minlength="1" ng-maxlength="20" required="">
+                </div>
+                <div class="col-md-9 col-md-offset-2 form-tips" ng-if="compForm.user_name.$invalid && (compForm.user_name.$touched || !compForm.user_name.$pristine)" ng-messages="compForm.user_name.$error" role="alert">
+                    <div ng-message="maxlength">姓名不能超过20位</div>
+                    <div ng-message="required">姓名不能为空</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">密码: </label>
+                <div class="col-md-9" ng-class="{ 'has-error' : compForm.password.$invalid && (compForm.password.$touched || !compForm.password.$pristine) }">
+                    <input type="text" class="form-control" placeholder="请输入密码" name="password" ng-model="userInfo.password" ng-minlength="6" ng-maxlength="20">
+                </div>
+                <div class="col-md-9 col-md-offset-2 form-tips" ng-if="compForm.password.$invalid && (compForm.password.$touched || !compForm.password.$pristine)" ng-messages="compForm.password.$error" role="alert">
+                    <div ng-message="minlength">密码长度必须为6-20个字符</div>
+                    <div ng-message="maxlength">密码长度必须为6-20个字符</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button has-permission="/v1/operator/updateOperator&PATCH" class="btn btn-primary" ng-disabled="compForm.$invalid" type="button" ng-click="editUser()" >提交</button>
+        <button class="btn btn-warning" type="button" ui-sref="me.sysUser">取消</button>
+    </div>
+    </div>
+</div>

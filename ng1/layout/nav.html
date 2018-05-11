@@ -1,0 +1,67 @@
+<div class="sub_nav_box" ng-show="currentNav!=''&&currentNav!=undefined">
+	<ul class="navAni nav_list" ng-show="hasActive(ch, 'roleS')">
+		<li class="nav_item" has-permission="/v1/roles/getByCondition&GET"><a ng-class="hasActive(ch,'role')" ui-sref="me.role">角色管理</a></li>
+		<li class="nav_item" has-permission="/v1/competence/getByCondition&GET"><a ng-class="hasActive(ch,'competence')" ui-sref="me.competence">权限串管理</a></li>
+		<li class="nav_item" has-permission="/v1/competence/getCompetenceJsTree&GET"><a ng-class="hasActive(ch,'competenceList')" ui-sref="me.competenceList">功能管理</a></li>
+	</ul>
+	<ul class="navAni nav_list" ng-show="hasActive(ch, 'codeManageS')">
+		<li class="nav_item" has-permission="/v1/twoCodeApply/getByCondition&GET"><a ng-class="hasActive(ch,'apllyRecord')" ui-sref="me.apllyRecord">申请记录管理</a></li>
+		<li class="nav_item" has-permission="/v1/twoCode&GET"><a ng-class="hasActive(ch,'codeManage')" ui-sref="me.codeManage">二维码管理</a></li>
+		<li class="nav_item" has-permission="/v1/twoCodeReceive&GET"><a ng-class="hasActive(ch,'useRegister')" ui-sref="me.useRegister">领用登记管理</a></li>
+		<li class="nav_item" has-permission="/v1/site/&GET"><a ng-class="hasActive(ch,'siteManage')" ui-sref="me.siteManage">网点管理</a></li>
+	</ul>
+</div>
+<div class="main_nav_box">
+	<ul class="nav_list">
+		<!--<li class="nav_item" has-permission="/v1/operator/&GET">
+			<a ng-class="hasActive(ch, 'sysUser')" ui-sref="me.sysUser" ng-click="selectedNav()">
+				<i class="fa  fa-user-o"></i>后台用户管理<i class="arrow fa fa-angle-right"></i>
+			</a> 
+		</li>
+		<li class="nav_item" has-permission="/v1/user&GET">
+			<a ng-class="hasActive(ch, 'terminalUser')" ui-sref="me.terminalUser" ng-click="selectedNav()">
+				<i class="fa  fa-handshake-o"></i>终端用户管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/twoCodeApply/getByCondition&GET">
+			<a ng-class="hasActive(ch, 'codeManageS')" ui-sref="me.codeManage" ng-click="selectedNav('codeManageS')">
+				<i class="fa fa-qrcode"></i>二维码管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/dataSummary&GET">
+			<a ng-class="hasActive(ch, 'dailyOverview')" ui-sref="me.dailyOverview" ng-click="selectedNav()">
+				<i class="fa fa-sun-o"></i>每日概述<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/forOldSys/carInformation/search&GET">
+			<a ng-class="hasActive(ch, 'carManage')" ui-sref="me.carManage" ng-click="selectedNav()">
+				<i class="fa fa-car"></i>车辆信息管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/competence/getByCondition&GET">
+			<a ng-class="hasActive(ch, 'roleS')" ui-sref="me.role" ng-click="selectedNav('roleS')">
+				<i class="fa  fa-users"></i>角色权限管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/order/&GET">
+			<a ng-class="hasActive(ch, 'order')" ui-sref="me.order" ng-click="selectedNav()">
+				<i class="fa fa-tasks"></i>订单管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/advertising/&GET">
+			<a ng-class="hasActive(ch, 'advertManage')" ui-sref="me.advertManage" ng-click="selectedNav()">
+				<i class="fa fa-bullhorn"></i>广告管理<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>-->
+		<li class="nav_item" has-permission="/v1/mapTree/getJsTree&GET">
+			<a ng-class="hasActive(ch, 'codeListManage')" ui-sref="me.echarts" ng-click="selectedNav()">
+				<i class="fa fa-sitemap"></i>echarts<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="nav_item" has-permission="/v1/noticeEvent&GET">
+			<a ng-class="hasActive(ch, 'noticeEvent')" ui-sref="me.map" ng-click="selectedNav()">
+				<i class="fa fa-comments-o"></i>地图<i class="arrow fa fa-angle-right"></i>
+			</a>
+		</li>
+	</ul>
+</div>

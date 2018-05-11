@@ -1,0 +1,51 @@
+<style>
+.text-r{
+	text-align: right;
+}
+.text-l{
+	text-align: left;
+}
+.set-user-role .row{
+	margin-bottom: 20px;
+}
+.set-role-title{
+	height: 35px;
+	line-height: 35px;
+}
+.set-user-role .role-list{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+</style>
+<nav class="breadcrumb"><i class="fa fa-home"></i> 首页 <span class="c-gray en">&gt;</span> 后台用户管理  <span class="c-gray en">&gt;</span>设置角色</nav>
+<nav class="breadcrumb"><a ui-sref="me.sysUser"><i class="fa fa-hand-o-left"></i>&nbsp;&nbsp;&nbsp;返&nbsp;回</a></nav>
+<div class="modal-header">
+	<h3 class="modal-accountType">设置角色</h3>
+</div>
+<div class="modal-body set-user-role">
+	<div class="text-c">
+		<form class="form form-horizontal" id="form-admin-role-add">
+	        <div class="row set-role-title">
+	            <label class="form-label col-xs-12 col-sm-2  text-r">用户姓名：</label>
+	            <div class="formControls col-xs-12 col-sm-8">
+	                <input class="form-control" type="text" class="input-text" readonly ng-model="userInfo.name">
+	            </div>
+	        </div>
+	        <div class="row">
+	            <label class="form-label col-xs-12 col-sm-2  text-r">角色：</label>
+	            <div class="formControls col-xs-12 col-sm-8">
+	                <dl class="permission-list text-l">
+	                    <dd>
+		                    <label class="role-list" ng-repeat="item in operatorInfo">
+		                    <input type="checkbox" value="" name="role" ng-model="item.hasChecked">{{item.name}}</label>
+	                            
+	                    </dd>
+	                </dl>
+	            </div>
+	        </div>
+	    </form>
+		<button has-permission="/v1/security/bindRoleForOperator&POST" class="btn btn-primary" ng-disabled="compForm.$invalid"
+			type="button" ng-click="addUserRole()">提交</button>
+		<button class="btn btn-warning" type="button" ui-sref="me.sysUser">取消</button>
+	</div>
+</div>

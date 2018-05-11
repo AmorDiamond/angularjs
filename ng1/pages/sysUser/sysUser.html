@@ -1,0 +1,102 @@
+<nav class="breadcrumb"><i class="fa fa-home"></i> 首页 <span class="c-gray en">&gt;</span> 后台用户管理  <span class="c-gray en">&gt;</span>用户列表</nav>
+<div class="contentContainer viewAni ng-scope">
+    <div class="content_box">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">后台用户管理</h3>
+            </div>
+            <div class="panel-body">
+                <div class="content_header form-inline">
+                    <form class="ng-pristine ng-valid ng-valid-date">
+                        <div class="form-group">
+                            <label>账号:</label> <input type="text"
+                                                        class="form-control"
+                                                        placeholder="账号" ng-model="userInfo.account">
+                        </div>
+                        <div class="form-group">
+                            <label>姓名:</label> <input type="text"
+                                                      class="form-control"
+                                                      placeholder="名字" ng-model="userInfo.name">
+                        </div>
+                        <div class="form-group">
+                            <label>状态:</label> <select
+                                class="form-control" ng-model="userInfo.status">
+	                            <option value="">全部</option>
+	                            <option value="1">正常</option>
+	                            <option value="0">禁用</option>
+	                        </select>
+	                        
+                        </div>
+                        <div class="clear_float"></div>
+                        <div class="m-tb-10">
+	                        <button type="submit" class="btn btn-primary" ng-click="getSysUser()">
+	                            <i class="fa fa-search"></i>搜索
+	                        </button>
+	                        <button class="btn btn-default" ng-click="reset()">重置</button>
+	                        <button has-permission="/v1/operator/&POST" type="button" class="btn btn-success fr" ui-sref="me.addUser">新增用户</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="content_body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-s table-overflow-x">
+                            <thead>
+                            <tr class="text-c">
+                                <th>ID</th>
+                                <th>账号</th>
+                                <th>姓名</th>
+                                <th>注册时间</th>
+                                <th>修改时间</th>
+                                <th>修改人</th>
+                                <th>创建人</th>
+                                <th>最后登录时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+	                            <tr class="text-c" ng-repeat="item in useres">
+	                                <td class="nowrap ng-binding"><span ng-if="item.id.length>5">{{item.id | limitTo:6}}***</span><span ng-if="item.id.length<6">{{item.id}}</span></td>
+	                                <td class="nowrap ng-binding">{{item.account}}</td>
+	                                <td class="nowrap ng-binding">{{item.name}}</td>
+	                                <td class="nowrap ng-binding">{{item.createDate | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+	                                <td class="nowrap ng-binding">{{item.modifyDate | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+	                                <td class="ng-binding">{{item.modifyUser.name}}</td>
+	                                <td class="ng-binding">{{item.createUser.name}}</td>
+	                                <td class="nowrap ng-binding">{{item.lastLoginTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+	                                <td class="nowrap ng-binding">
+		                                <span ng-if="item.status == 'STATUS_NORMAL'">正常</span>
+		                                <span ng-if="item.status == 'STATUS_DISABLE'" class="require_span">禁用</span>
+		                            </td>
+	                                <td class="f-14">
+	                                	<div class="nowrap">
+	                                		<a has-permission="/v1/operator/updateOperator&PATCH" uib-tooltip="编辑" tooltip-placement="top" href="javascript:;" ui-sref="me.editUser({userId:item.id})"><i class="fa fa-pencil"></i></a>
+	                                		<a has-permission="/v1/operator/disableOrUsable&PATCH" ng-if="item.status == 'STATUS_NORMAL'" uib-tooltip="禁用" tooltip-placement="top" href="javascript:;" ng-click="disableUser(item.id,item.status)"><i class="fa fa-ban"></i></a>
+	                                		<a has-permission="/v1/operator/disableOrUsable&PATCH" ng-if="item.status == 'STATUS_DISABLE'" uib-tooltip="启用" tooltip-placement="top" href="javascript:;" ng-click="disableUser(item.id,item.status)"><i class="fa fa-check-square"></i></a>
+						            		<a has-permission="/v1/operator/&DELETE" uib-tooltip="删除" tooltip-placement="top" href="javascript:;" ng-click="delUser(item.id)" class="ml-5"><i class="fa fa-remove"></i></a>
+						            		<a has-permission="/v1/operator/getById&GET" uib-tooltip="设置角色" tooltip-placement="top" href="javascript:;" ui-sref="me.setUserRole({userId: item.id})">设置角色</a>
+	                                	</div>
+						            </td>
+	                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+					<div class="page_box">
+						<div class="col-lg-4 col-sm-4">
+							共<span class="ng-binding">{{pageParams.totalItems}}</span>条数据，每页<span class="ng-binding">{{pageParams.itemsPerPage}}</span>条。
+						</div>
+						
+						<ul ng-if="pageParams.totalItems" uib-pagination total-items="pageParams.totalItems"
+							ng-model="pageParams.currentPage" max-size="pageParams.maxSize"
+							previous-text="上一页" next-text="下一页"
+							items-per-page="pageParams.itemsPerPage" ng-change="getSysUser()"
+							class="pagination-sm" boundary-link-numbers="true"></ul>
+					</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
