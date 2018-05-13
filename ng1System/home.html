@@ -1,0 +1,27 @@
+<div class="h-100">
+
+  <!-- BEGIN HEADER -->
+  <div ui-view="header" class="page-header">
+  </div>
+  <!-- END HEADER -->
+
+
+
+  <!-- BEGIN CONTAINER -->
+  <div class="page-container h-100">
+      <!-- BEGIN SIDEBAR -->
+      <div ui-view="nav" class="page-sidebar-wrapper">
+      </div>
+      <!-- END SIDEBAR -->
+      <div class="page-content-wrapper">
+        <div class="page-content">
+            <!-- BEGIN ACTUAL CONTENT-->
+            <div ui-view="container" class="fade-in-up pageAnimate">
+              欢迎回来
+            </div>
+            <!-- END ACTUAL CONTENT -->
+        </div>
+      </div>
+  </div>
+  <!-- END CONTAINER -->
+</div>

@@ -1,0 +1,58 @@
+<div class="ngView slide">
+	角色管理页面{{name}}
+	<input type="text" id="plugins4_q" value="" class="input" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;">
+	<div id="jstree_demo_div"></div>
+</div>
+<script type="text/ng-template" id="myModalContent.html">
+	<div class="modal-header">
+		<h3 ng-if="codeInfo.index" class="modal-title" id="modal-title">修改码表信息</h3>
+		<h3 ng-if="!codeInfo.index" class="modal-title" id="modal-title">创建码表</h3>
+	</div>
+	<form name="codeForm">
+		<div class="modal-body" id="modal-body">
+			<div class="code-edit-modal m-tb-10">
+				<div ng-class="{ 'has-error' : codeForm.code_name.$invalid && (!codeForm.code_name.$pristine || codeForm.code_name.$touched)}"><span class="require_span">*</span>码表名称:
+					<span><input type="text" name="code_name" class="form-control" ng-model="codeInfo.name" required></span>
+				</div>
+				<div class="form-tips" ng-if="codeForm.code_name.$invalid && (!codeForm.code_name.$pristine || codeForm.code_name.$touched)" ng-messages="codeForm.code_name.$error" role="alert">
+					<div ng-message="required">码表名称不能为空</div>
+				</div>
+			</div>
+			<div ng-if="codeTypeInfo && id == 1" class="code-edit-modal m-tb-10">
+				<div ng-class="{ 'has-error' : codeForm.code_type.$invalid && (!codeForm.code_type.$pristine || codeForm.code_type.$touched)}"><span class="require_span">*</span>码表类型:
+					<select class="form-control" name="code_type" ng-model="codeInfo.type" ng-options="item.value as item.desc for item in codeTypeInfo" required>
+						<option value="">请选择码表类型</option>
+					</select>
+				</div>
+				<div class="form-tips" ng-if="codeForm.code_type.$invalid && (!codeForm.code_type.$pristine || codeForm.code_type.$touched)" ng-messages="codeForm.code_type.$error" role="alert">
+					<div ng-message="required">码表类型不能为空</div>
+				</div>
+			</div>
+			<div class="code-edit-modal m-tb-10">
+				<div ng-class="{ 'has-error' : codeForm.code_rule.$invalid && (!codeForm.code_rule.$pristine || codeForm.code_rule.$touched)}">码表规则:
+					<span><input type="text" name="code_rule" class="form-control" ng-model="codeInfo.rule"></span>
+				</div>
+				<div class="form-tips" ng-if="codeForm.code_rule.$invalid && (!codeForm.code_rule.$pristine || codeForm.code_rule.$touched)" ng-messages="codeForm.code_rule.$error" role="alert">
+					<div ng-message="required">码表规则不能为空</div>
+				</div>
+			</div>
+			<div class="code-edit-modal m-tb-10">
+				<div>上传封面:
+					<div class="upload_img" ngf-pattern="'.bmp,.jpg,.gif,.png'" ngf-max-size="5120KB" ngf-accept="'.bmp,.jpg,.gif,.png'" ngf-select="img_upload($file)">
+						<img uib-tooltip="上传商家封面图" tooltip-placement="right" class="upload_img" ngf-resize="{width: 750, height: 600, quality: 0.9}" ngf-thumbnail="imgPath==''?'http://101.37.86.143:8081/lib/images/pic_add.png':imgPath" src="" style="cursor:pointer">
+					</div>
+				</div>
+			</div>
+			<div class="code-edit-modal m-tb-10">
+				<div>码表介绍:
+					<span><input type="text" name="code_introduction" class="form-control" ng-model="codeInfo.introduction"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<button ng-disabled="codeForm.$invalid" class="btn btn-primary" type="button" ng-click="ok()">确定</button>
+			<button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+		</div>
+	</form>
+</script>

@@ -1,0 +1,66 @@
+<div>test{{name}}</div>
+<style>
+	.form{
+		width: 900px;
+		margin: 0 auto;
+	}
+	.req-red{
+		color: #f00;
+		padding-right: 5px;
+	}
+</style>
+<div class="form slide">
+	<form name="myForm">
+		<div class="form-group">
+			<label class="col-md-2"><span class="req-red">*</span>帐号：</label>
+			<div ng-class="{'has-error':myForm.name.$invalid && !myForm.name.$pristine}">
+				<input tooltip-placement="bottom-left" uib-tooltip="On the bottom-left" class="form-control" type="text" placeholder="请输入帐号" name="name" ng-model="user.name" ng-minlength="3" ng-maxlength="9" required>
+			</div>
+			<div ng-if="myForm.name.$error.minlength">至少3位数</div>
+			<div ng-if="!myForm.name.$pristine" ng-messages="myForm.name.$error" role="alert">
+			    <div ng-message="minlength">至少3位</div>
+			    <div ng-message="maxlength">最多9位</div>
+			    <div ng-message="required">不能为空</div>
+		  	</div>
+		  	<!-- <div ng-if="!myForm.name.$pristine" ng-messages="myForm.name.$error" role="alert">
+			    <ng-messages-include src="views/tpls/error.html"></ng-messages-include>
+		  	</div> -->
+		</div>
+		<div class="form-group">
+			<label class="col-md-2"><span class="req-red">*</span>密码：</label>
+			<div ng-class="{'has-error':myForm.password.$invalid && !myForm.password.$pristine}">
+				<input class="form-control" type="password" placeholder="请输入密码" name="password" ng-model="user.password" ng-minlength="6" ng-maxlength="16" required>
+			</div>
+			<div ng-if="!myForm.password.$pristine" ng-messages="myForm.password.$error" role="alert">
+			    <div ng-message="minlength">至少6位</div>
+			    <div ng-message="maxlength">最多16位</div>
+			    <div ng-message="required">不能为空</div>
+		  	</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2"><span class="req-red">*</span>年龄：</label>
+			<div ng-class="{'has-error':myForm.age.$invalid && !myForm.age.$pristine}">
+				<input class="form-control" type="number" placeholder="请输入年龄" name="age" ng-model="user.age" required>
+			</div>
+			<div ng-if="!myForm.age.$pristine" ng-messages="myForm.age.$error" role="alert">
+			    <div ng-message="number">必须位数字</div>
+			    <div ng-message="required">不能为空</div>
+		  	</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2"><span class="req-red">*</span>Times：</label>
+			<div ng-class="{'has-error':myForm.times.$invalid && !myForm.times.$pristine}">
+				<select class="form-control" name="times" ng-minlength="1" ng-model="user.times" required>
+					<option value="">请选择</option>
+					<option value="1">first</option>
+					<option value="2">second</option>
+				</select>
+			</div>
+			<div ng-if="!myForm.times.$pristine" ng-messages="myForm.times.$error" role="alert">
+			    <div ng-message="minlength">必须选择一个</div>
+			    <div ng-message="required">不能为空</div>
+		  	</div>
+		</div>
+		<input class="btn btn-success" type="submit" value="提交" ng-disabled="myForm.$invalid">
+	</form>
+</div>

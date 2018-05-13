@@ -1,0 +1,20 @@
+<div class="page-sidebar">
+  <ul class="page-sidebar-menu" ng-siderbar-ul data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+      <li class="start" ng-class="hasActive('user')">
+      <!-- 使用方法实现存在子级的时候，子级激活时父级添加指定类，访问页面时，ng-class会自动去执行返回结果 -->
+        <a title="{{ch}}" ui-sref="me.user">
+            <i class="fa fa-user"></i>
+            <span class="title">用户管理</span>
+            <i class="fa fa-angle-right fr" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+      <!-- ui-sref-actice在一级菜单里可以实现为激活的路由添加指定类，如果存在子级，访问子级时父级无法添加 -->
+        <a title="{{ch}}" ui-sref="me.role">
+            <i class="fa fa-users"></i>
+            <span class="title">角色管理</span>
+            <i class="fa fa-angle-right fr" aria-hidden="true"></i>
+        </a>
+      </li>
+  </ul>
+</div>

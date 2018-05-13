@@ -1,0 +1,111 @@
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.pageAnimate.ng-enter {
+  animation: bounceInRight 1s;
+}
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+
+/*.pageAnimate.ng-leave {
+  animation: bounceOutLeft .5s;
+}*/
+.page-sidebar-wrapper{
+	position: relative;
+	width: 150px;
+	height: 100%;
+	float: left;
+	border-top: 1px solid #ddd;
+	background: -webkit-linear-gradient(top,#0b868c,#128496);
+	box-shadow: 2px 2px 8px #128496;
+	z-index: 9;
+}
+.h-100{
+	height: 100%;
+}
+.page-header{
+	margin: 0;
+	color: #fff;
+	border: none;
+	background: -webkit-linear-gradient(left,#0b868c,#128496);
+    box-shadow: 5px 2px 8px #128496;
+}
+.page-content{
+	padding: 20px 20px 20px 170px;
+}
+a{
+	color: #fff;
+}
+a:focus, a:hover{
+	text-decoration: none;
+}
+a:focus{
+	color: inherit;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+.fr{
+	float: right;
+}
+.page-sidebar-menu{
+	line-height: 30px;
+	color: #fff;
+}
+.page-sidebar-menu li{
+	padding: 0 10px;
+	border-bottom: 1px solid #ddd;
+}
+.page-sidebar-menu li a{
+	display: block;
+}
+.page-sidebar-menu li .fa{
+	width: 20px;
+	line-height: 30px;
+	text-align: center;
+}
+.active{
+    background: #00b7ca;
+}
