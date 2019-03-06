@@ -1,4 +1,4 @@
-angular.module('myApp', ['ui.router', '$ocLazyLoad'])
+angular.module('myApp', ['ui.router', 'oc.lazyLoad'])
 .config(function($stateProvider, $urlRouterProvider) {
   var layout = {
     name: '',
@@ -6,10 +6,10 @@ angular.module('myApp', ['ui.router', '$ocLazyLoad'])
     // templateUrl: '../pages/layout/index.html',
     views: {
       '': {
-        templateUrl: '../pages/layout/index.html'
+        templateUrl: './pages/layout/index.html'
       },
       'nav@me': {
-        templateUrl: '../pages/layout/nav.html'
+        templateUrl: './pages/layout/nav.html'
       }
     }
   };
@@ -18,17 +18,24 @@ angular.module('myApp', ['ui.router', '$ocLazyLoad'])
     url: 'home',
     views: {
       'container@me': { //在state为me的配置里面找到ui-view="container"的出口
-        templateUrl: '../pages/home/home.html'
+        templateUrl: './pages/home/home.html',
+        resolve: {
+          loadPlugIn: ['$ocLazyLoad', function ($ocLazyLoad) {
+            return $ocLazyLoad
+              .load(['./pages/home/home.js'])
+          }]
+        },
+        controller: 'homeCtrl'
       }
     },
-    lazyLoad: function ($transition$) {
+    /*lazyLoad: function ($transition$) {
       return $transition$.injector().get('$ocLazyLoad').load('../pages/home/home.js');
-    }
+    }*/
   };
   var list = {
     name: 'list',
     url: '/list',
-    templateUrl: '../pages/list/list.html'
+    templateUrl: './pages/list/list.html'
   };
   var notPage = {
     name: 'notPage',

@@ -1,4 +1,3 @@
-angular.module(me.home, [])
-.controller('homeCtrl', function($scope) {
+angular.module('myApp.home', []).controller('homeCtrl',function  ($scope) {
   console.log($scope)
-});
+})
